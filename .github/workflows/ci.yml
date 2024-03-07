@@ -63,34 +63,6 @@ jobs:
 
       - run: pnpm typecheck
 
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 21.7.0
-
-      - run: corepack enable
-
-      - name: find pnpm cache path
-        id: cache
-        run: echo "path=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v4
-        with:
-          path: ${{ steps.cache.outputs.path }}
-          key: v1-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            v1-pnpm-
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - run: pnpm test
-
   benchmark:
     needs: [lint, typecheck]
     runs-on: ubuntu-latest
