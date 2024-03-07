@@ -64,7 +64,6 @@ jobs:
       - run: pnpm typecheck
 
   benchmark:
-    needs: [lint, typecheck]
     runs-on: ubuntu-latest
 
     steps:
