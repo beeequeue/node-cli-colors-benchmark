@@ -5,14 +5,14 @@ import ansis from "ansis"
 import chalk from "chalk"
 import * as colorette from "colorette"
 import picocolors from "picocolors"
-import { bench, describe } from "vitest"
+import { bench, describe, BenchOptions } from "vitest"
 
 import { pkgs } from "./packages"
 
 const options = {
-  warmupIterations: process.env.CI ? 250 : 50,
-  iterations: process.env.CI ? 1000 : 100,
-}
+  warmupTime: process.env.CI ? 500 : 150,
+  time: process.env.CI ? 2000 : 500,
+} satisfies BenchOptions
 
 describe(
   "one (red)",

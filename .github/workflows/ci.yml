@@ -15,7 +15,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 21.7.0
 
       - run: corepack enable
 
@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - run: pnpm lint --format compact
+      - run: pnpm lint
 
   typecheck:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 21.7.0
 
       - run: corepack enable
 
@@ -71,7 +71,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 21.7.0
 
       - run: corepack enable
 
@@ -91,7 +91,8 @@ jobs:
 
       - run: pnpm test
 
-  build:
+  benchmark:
+    needs: [lint, typecheck]
     runs-on: ubuntu-latest
 
     steps:
@@ -99,7 +100,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 21.7.0
 
       - run: corepack enable
 
@@ -117,4 +118,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - run: pnpm build
+      - run: pnpm bench --reporter=json --outFile=./bench.json

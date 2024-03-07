@@ -19,9 +19,9 @@
     ]
   },
   "scripts": {
+    "bench": "vitest bench",
     "dev": "tsup --watch",
     "lint": "oxlint -D pedantic -D correctness -D nursery -D style -D restriction -A no-undef -A no-unresolved",
-    "test": "vitest",
     "typecheck": "tsc --noEmit --project tsconfig.json",
     "prepare": "simple-git-hooks"
   },
