@@ -90,4 +90,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - run: pnpm bench --reporter=json --outFile=./bench.json
+      - run: pnpm bench --reporter=json --outputFile=./bench.json
