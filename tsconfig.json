@@ -1,0 +1,32 @@
+{
+  "extends": ["@tsconfig/node20/tsconfig.json", "@tsconfig/strictest/tsconfig.json"],
+  "compilerOptions": {
+    // Output
+    "noEmit": true,
+    "sourceMap": true,
+
+    // Modules
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+
+    // Lessen strictness
+    "importsNotUsedAsValues": "remove",
+    "noImplicitReturns": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+    "verbatimModuleSyntax": false,
+
+    // Extra types
+    "types": ["node"]
+  },
+
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "dist", "copy.ts"]
+}

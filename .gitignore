@@ -1,0 +1,11 @@
+.DS_Store
+
+node_modules/
+dist/
+
+.idea/
+!.idea/jsLibraryMappings.xml
+!.idea/template.iml
+!.idea/prettier.xml
+
+.env
