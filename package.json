@@ -1,19 +1,20 @@
 {
   "name": "color-perf",
+  "types": "module",
   "version": "0.0.0",
   "author": "BeeeQueue <adam@haglund.dev>",
   "license": "MIT",
   "private": true,
   "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2",
   "engines": {
-    "node": "^20"
+    "node": "^21.7"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,json5,yaml,yml,css,scss,md}": [
-      "oxlint -D pedantic -D correctness -D nursery -D style -D restriction -A no-undef -A no-unresolved",
+      "oxlint --fix -D pedantic -D correctness -D nursery -D style -D restriction -A no-undef -A no-unresolved",
       "prettier --write"
     ]
   },
