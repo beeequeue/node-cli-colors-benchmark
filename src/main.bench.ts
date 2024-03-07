@@ -7,6 +7,8 @@ import * as colorette from "colorette"
 import picocolors from "picocolors"
 import { bench, describe } from "vitest"
 
+import { pkgs } from "./packages"
+
 const options = {
   warmupIterations: process.env.CI ? 250 : 50,
   iterations: process.env.CI ? 1000 : 100,
@@ -15,12 +17,12 @@ const options = {
 describe(
   "one (red)",
   () => {
-    bench("node:util", () => {
+    bench(pkgs.native, () => {
       styleText("red", "foo")
     })
 
     bench(
-      "ansi-colors",
+      pkgs["ansi-colors"],
       () => {
         ansiColors.red("foo")
       },
@@ -28,7 +30,7 @@ describe(
     )
 
     bench(
-      "ansis",
+      pkgs.ansis,
       () => {
         ansis.red("foo")
       },
@@ -36,7 +38,7 @@ describe(
     )
 
     bench(
-      "chalk",
+      pkgs.chalk,
       () => {
         chalk.red("foo")
       },
@@ -44,7 +46,7 @@ describe(
     )
 
     bench(
-      "colorette",
+      pkgs.colorette,
       () => {
         colorette.red("foo")
       },
@@ -52,7 +54,7 @@ describe(
     )
 
     bench(
-      "picocolors",
+      pkgs.picocolors,
       () => {
         picocolors.red("foo")
       },
@@ -65,12 +67,12 @@ describe(
 describe(
   "two (red, bold)",
   () => {
-    bench("node:util", () => {
+    bench(pkgs.native, () => {
       styleText("red", styleText("bold", "foo"))
     })
 
     bench(
-      "ansi-colors",
+      pkgs["ansi-colors"],
       () => {
         ansiColors.red.bold("foo")
       },
@@ -78,7 +80,7 @@ describe(
     )
 
     bench(
-      "ansis",
+      pkgs.ansis,
       () => {
         ansis.red.bold("foo")
       },
@@ -86,7 +88,7 @@ describe(
     )
 
     bench(
-      "chalk",
+      pkgs.chalk,
       () => {
         chalk.red.bold("foo")
       },
@@ -94,7 +96,7 @@ describe(
     )
 
     bench(
-      "colorette",
+      pkgs.colorette,
       () => {
         colorette.red(colorette.bold("foo"))
       },
@@ -102,7 +104,7 @@ describe(
     )
 
     bench(
-      "picocolors",
+      pkgs.picocolors,
       () => {
         picocolors.red(picocolors.bold("foo"))
       },
@@ -115,12 +117,12 @@ describe(
 describe(
   "three (blue, bold, italic)",
   () => {
-    bench("node:util", () => {
+    bench(pkgs.native, () => {
       styleText("blue", styleText("bold", styleText("italic", "foo")))
     })
 
     bench(
-      "ansi-colors",
+      pkgs["ansi-colors"],
       () => {
         ansiColors.blue.bold.italic("foo")
       },
@@ -128,7 +130,7 @@ describe(
     )
 
     bench(
-      "ansis",
+      pkgs.ansis,
       () => {
         ansis.blue.bold.italic("foo")
       },
@@ -136,7 +138,7 @@ describe(
     )
 
     bench(
-      "chalk",
+      pkgs.chalk,
       () => {
         chalk.blue.bold.italic("foo")
       },
@@ -144,7 +146,7 @@ describe(
     )
 
     bench(
-      "colorette",
+      pkgs.colorette,
       () => {
         colorette.blue(colorette.bold(colorette.italic("foo")))
       },
@@ -152,7 +154,7 @@ describe(
     )
 
     bench(
-      "picocolors",
+      pkgs.picocolors,
       () => {
         picocolors.blue(picocolors.bold(picocolors.italic("foo")))
       },
@@ -163,7 +165,7 @@ describe(
 )
 
 describe("complex", () => {
-  bench("node:util", () => {
+  bench(pkgs.native, () => {
     styleText(
       "blue",
       styleText(
@@ -183,7 +185,7 @@ describe("complex", () => {
   })
 
   bench(
-    "ansi-colors",
+    pkgs["ansi-colors"],
     () => {
       ansiColors.bgBlack.magenta.yellow.red.cyan.blue.bold.italic("foo")
     },
@@ -191,7 +193,7 @@ describe("complex", () => {
   )
 
   bench(
-    "ansis",
+    pkgs.ansis,
     () => {
       ansis.bgBlack.magenta.yellow.red.cyan.blue.bold.italic("foo")
     },
@@ -199,7 +201,7 @@ describe("complex", () => {
   )
 
   bench(
-    "chalk",
+    pkgs.chalk,
     () => {
       chalk.bgBlack.magenta.yellow.red.cyan.blue.bold.italic("foo")
     },
@@ -207,7 +209,7 @@ describe("complex", () => {
   )
 
   bench(
-    "colorette",
+    pkgs.colorette,
     () => {
       colorette.bgBlack(
         colorette.magenta(
@@ -223,7 +225,7 @@ describe("complex", () => {
   )
 
   bench(
-    "picocolors",
+    pkgs.picocolors,
     () => {
       picocolors.bgBlack(
         picocolors.magenta(

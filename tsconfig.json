@@ -6,7 +6,8 @@
     "sourceMap": true,
 
     // Modules
-    "module": "es2022",
+    "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "esModuleInterop": true,
