@@ -4,7 +4,12 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - README.md
   pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   lint:
@@ -65,6 +70,8 @@ jobs:
 
   benchmark:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -89,4 +96,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - run: pnpm bench --reporter=json --outputFile=./bench.json
+      - run: pnpm bench --outputJson bench.json
+
+      - run: tsx update-graphs.ts
+        if: ${{ github.ref == 'refs/heads/main' }}
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          commit_message: Update graphs
+          file_pattern: README.md
