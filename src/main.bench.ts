@@ -5,7 +5,7 @@ import ansis from "ansis"
 import chalk from "chalk"
 import * as colorette from "colorette"
 import picocolors from "picocolors"
-import { bench, describe, BenchOptions } from "vitest"
+import { bench, describe } from "vitest"
 
 import { pkgs } from "./packages"
 
