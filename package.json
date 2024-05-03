@@ -5,9 +5,9 @@
   "author": "BeeeQueue <adam@haglund.dev>",
   "license": "MIT",
   "private": true,
-  "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2",
+  "packageManager": "pnpm@9.1.0-0+sha512.568e95e38592215a03fa2cb02a58b67c6452e51b176d9941d546a59a471c42e2b4c2428bf286addcbe4e2dec98e682e2df0fa93a5082cf3493afc496affd8ffb",
   "engines": {
-    "node": "^21.7"
+    "node": "^22"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
@@ -33,7 +33,7 @@
     "picocolors": "1.0.0"
   },
   "devDependencies": {
-    "@tsconfig/node20": "20.1.2",
+    "@tsconfig/node22": "22.0.0",
     "@tsconfig/strictest": "2.0.3",
     "@types/node": "20.11.25",
     "dotenv": "16.4.5",
