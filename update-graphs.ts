@@ -1,5 +1,5 @@
 import data from "./bench.json" with { type: "json" }
-import dedent from "ts-dedent"
+import { dedent } from "ts-dedent"
 import { readFileSync, writeFileSync } from "node:fs"
 
 const toResult = (input: (typeof data)["files"][number]["groups"][number]) => ({
