@@ -14,14 +14,14 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,json5,yaml,yml,css,scss,md}": [
-      "oxlint --fix -D pedantic -D correctness -D nursery -D style -D restriction -A no-undef -A no-unresolved",
+      "oxlint -D pedantic -D correctness -A no-undef -A no-unresolved",
       "prettier --write"
     ]
   },
   "scripts": {
     "bench": "vitest bench",
     "dev": "tsup --watch",
-    "lint": "oxlint -D pedantic -D correctness -D nursery -D style -D restriction -A no-undef -A no-unresolved",
+    "lint": "oxlint -D pedantic -D correctness -A no-undef -A no-unresolved",
     "typecheck": "tsc --noEmit --project tsconfig.json",
     "prepare": "simple-git-hooks"
   },
